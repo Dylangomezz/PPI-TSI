@@ -27,4 +27,4 @@ class Funcionario(models.Model):
         null=False,
         blank=False
     )
-objetos = models.Manager()
+#objetos = models.Manager()

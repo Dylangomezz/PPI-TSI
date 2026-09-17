@@ -8,4 +8,5 @@ app_name = 'website'
 urlpatterns = [
     # GET /
     path('', views.index, name='index'),
+    path('funcionarios/', views.ListaFuncionarios.as_view(), name='funciorios')
 ]

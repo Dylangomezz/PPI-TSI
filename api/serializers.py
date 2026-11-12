@@ -4,12 +4,12 @@ from api.models import FundoImobiliario
 class FundoImobiliarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = FundoImobiliario
-            fields = [
+        fields = [
             'id',
             'codigo',
             'setor',
             'dividend_yield_medio_12m',
             'vacancia_financeira',
             'vacancia_fisica',
-            'quantidade_ativos'
-            ]
+            'quantidade_ativos',
+        ]

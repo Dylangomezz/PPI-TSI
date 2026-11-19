@@ -1,7 +1,9 @@
 # Arquivo views.py dentro do app api
-from api.serializers import FundoImobiliarioSerializer
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework import viewsets, permissions
 from api.models import FundoImobiliario
+from api.serializers import FundoImobiliarioSerializer
 
 
 class FundoImobiliarioViewSet(viewsets.ModelViewSet):
@@ -27,3 +29,22 @@ class FundoImobiliarioViewSet(viewsets.ModelViewSet):
     # (logados) podem visualizar, criar, editar ou excluir os dados.
     permission_classes = [permissions.IsAuthenticated]
 
+    
+    # Backends de consulta (Cap. 8)
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    
+    # Filtragem exata por campos específicos
+    filterset_fields = ['codigo', 'setor']
+
+    # Busca textual
+    search_fields = ['codigo', 'setor']
+    
+    # Ordenação padrão e campos permitidos para ordenação
+    ordering = ['-dividend_yield_medio_12m']
+    ordering_fields = [
+        'dividend_yield_medio_12m',
+        'setor',
+        'vacancia_financeira',
+        'vacancia_fisica',
+        'quantidade_ativos',
+    ] 
